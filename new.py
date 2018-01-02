@@ -1,7 +1,9 @@
 import webbrowser
-choice = input ('\n\
+from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
 
-Labas, pasirink mankštą! Spausk skaičių ir enter. \n\
+
+choice = input ('\n\Labas, pasirink mankštą! Spausk skaičių ir enter. \n\
 \n\
 1 - \"Gentle Morning Practice\"\n\
 \n\
@@ -18,7 +20,14 @@ Labas, pasirink mankštą! Spausk skaičių ir enter. \n\
 7 - \"Bedtime Yoga Sequence!\"\n\
 ')
 if choice =="1":
-    webbrowser.open('https://www.youtube.com/watch?v=GnHTeHAZQhM')
+    driver = webdriver.Chrome()
+    driver.get('https://youtu.be/Is8tMCpv4F8')
+    playeris = driver.find_element_by_id('player')
+    actionChains = ActionChains(driver)
+    actionChains.double_click(playeris).perform()
+
+
+    #webbrowser.open('https://www.youtube.com/watch?v=GnHTeHAZQhM')
 elif choice =="2":
     webbrowser.open('https://youtu.be/Is8tMCpv4F8?t=55')
 elif choice =="3":
